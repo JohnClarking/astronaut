@@ -20,22 +20,22 @@ module.exports = function (grunt) {
     };
 
     grunt.initConfig({
-        stormcall: config,
+        astronaut: config,
         watch: {
             compass: {
-                files: ['<%= stormcall.app %>/styles/{,*/}*.{scss,sass}'],
+                files: ['<%= astronaut.app %>/styles/{,*/}*.{scss,sass}'],
                 tasks: ['compass:server', 'autoprefixer', 'clean:dist', 'copy:dist', 'copy:images']
             },
             styles: {
-                files: ['<%= stormcall.app %>/styles/{,*/}*.css'],
+                files: ['<%= astronaut.app %>/styles/{,*/}*.css'],
                 tasks: ['copy:styles', 'autoprefixer', 'clean:dist', 'copy:dist', 'copy:images']
             },
             jsLang: {
-                files: ['<%= stormcall.app %>/lang/*'],
+                files: ['<%= astronaut.app %>/lang/*'],
                 tasks: ['i18n', 'clean:dist', 'copy:dist', 'copy:images']
             },
             scripts: {
-                files: ['<%= stormcall.app %>/scripts/{,*/}*.js', '<%= stormcall.app %>/**/*.js'],
+                files: ['<%= astronaut.app %>/scripts/{,*/}*.js', '<%= astronaut.app %>/**/*.js'],
                 tasks: ['jshint', 'copy:requirejs', 'requirejs:production', 'clean:dist', 'copy:dist', 'copy:images'],
                 options: {
                     // Start a live reload server on the default port 35729
@@ -43,11 +43,11 @@ module.exports = function (grunt) {
                 }
             },
             images: {
-                files: ['<%= stormcall.app %>/images/{,*/}*.{png,jpg,jpeg}'],
+                files: ['<%= astronaut.app %>/images/{,*/}*.{png,jpg,jpeg}'],
                 tasks: ['imagemin', 'clean:dist', 'copy:dist', 'copy:images']
             },
             fonts: {
-                files: ['<%= stormcall.app %>/styles/fonts/*'],
+                files: ['<%= astronaut.app %>/styles/fonts/*'],
                 tasks: ['copy:tmp', 'clean:dist', 'copy:dist', 'copy:images']
             }
         },
@@ -56,8 +56,8 @@ module.exports = function (grunt) {
                 files: [{
                     dot: true,
                     src: [
-                        '<%= stormcall.tmp %>/*',
-                        '!<%= stormcall.tmp %>/.git*'
+                        '<%= astronaut.tmp %>/*',
+                        '!<%= astronaut.tmp %>/.git*'
                     ]
                 }]
             },
@@ -65,35 +65,35 @@ module.exports = function (grunt) {
                 files: [{
                     dot: true,
                     src: [
-                        '<%= stormcall.dist %>/*',
-                        '!<%= stormcall.dist %>/.git*'
+                        '<%= astronaut.dist %>/*',
+                        '!<%= astronaut.dist %>/.git*'
                     ]
                 }]
             },
-            server: '<%= stormcall.tmp %>'
+            server: '<%= astronaut.tmp %>'
         },
         jshint: {
             options: {
                 jshintrc: '.jshintrc',
                 ignores: [
-                    '<%= stormcall.app %>/scripts/thirdparty/{,*/}*.js',
-                    '<%= stormcall.app %>/scripts/modules/stormcall_i18n.js',
-                    '<%= stormcall.app %>/scripts/libs/polyfills.js'
+                    '<%= astronaut.app %>/scripts/thirdparty/{,*/}*.js',
+                    '<%= astronaut.app %>/scripts/modules/astronaut_i18n.js',
+                    '<%= astronaut.app %>/scripts/libs/polyfills.js'
                 ]
             },
             all: [
-                '<%= stormcall.app %>/scripts/{,*/}*.js'
+                '<%= astronaut.app %>/scripts/{,*/}*.js'
             ]
         },
         compass: {
             options: {
-                sassDir: '<%= stormcall.app %>/styles',
-                cssDir: '<%= stormcall.tmp %>/styles',
-                generatedImagesDir: '<%= stormcall.tmp %>/images/generated',
-                imagesDir: '<%= stormcall.app %>/images',
-                javascriptsDir: '<%= stormcall.app %>/scripts',
-                fontsDir: '<%= stormcall.app %>/styles/fonts',
-                importPath: '<%= stormcall.app %>/bower_components',
+                sassDir: '<%= astronaut.app %>/styles',
+                cssDir: '<%= astronaut.tmp %>/styles',
+                generatedImagesDir: '<%= astronaut.tmp %>/images/generated',
+                imagesDir: '<%= astronaut.app %>/images',
+                javascriptsDir: '<%= astronaut.app %>/scripts',
+                fontsDir: '<%= astronaut.app %>/styles/fonts',
+                importPath: '<%= astronaut.app %>/bower_components',
                 httpImagesPath: '/images',
                 httpGeneratedImagesPath: '/images/generated',
                 httpFontsPath: '/styles/fonts',
@@ -101,7 +101,7 @@ module.exports = function (grunt) {
             },
             tmp: {
                 options: {
-                    generatedImagesDir: '<%= stormcall.tmp %>/images/generated'
+                    generatedImagesDir: '<%= astronaut.tmp %>/images/generated'
                 }
             },
             server: {
@@ -117,16 +117,16 @@ module.exports = function (grunt) {
             tmp: {
                 files: [{
                     expand: true,
-                    cwd: '<%= stormcall.tmp %>/styles/',
+                    cwd: '<%= astronaut.tmp %>/styles/',
                     src: '{,*/}*.css',
-                    dest: '<%= stormcall.tmp %>/styles/'
+                    dest: '<%= astronaut.tmp %>/styles/'
                 }]
             }
         },
         'bower-install': {
             app: {
-                html: '<%= stormcall.app %>/index.html',
-                ignorePath: '<%= stormcall.app %>/'
+                html: '<%= astronaut.app %>/index.html',
+                ignorePath: '<%= astronaut.app %>/'
             }
         },
         uglify: {
@@ -146,11 +146,11 @@ module.exports = function (grunt) {
                     mangle: true
                 },
                 // files: {
-                //     '<%= stormcall.tmp %>/scripts/main.js': '<%= stormcall.tmp %>/scripts/main.js'
+                //     '<%= astronaut.tmp %>/scripts/main.js': '<%= astronaut.tmp %>/scripts/main.js'
                 // }
                 files: [{
-                    '<%= stormcall.tmp %>/scripts/main.js': '<%= stormcall.tmp %>/scripts/main.js',
-                    '<%= stormcall.tmp %>/bower_components/requirejs/require.js': '<%= stormcall.tmp %>/bower_components/requirejs/require.js'
+                    '<%= astronaut.tmp %>/scripts/main.js': '<%= astronaut.tmp %>/scripts/main.js',
+                    '<%= astronaut.tmp %>/bower_components/requirejs/require.js': '<%= astronaut.tmp %>/bower_components/requirejs/require.js'
                 }]
             }
         },
@@ -158,9 +158,9 @@ module.exports = function (grunt) {
             tmp: {
                 files: [{
                     expand: true,
-                    cwd: '<%= stormcall.app %>/images',
+                    cwd: '<%= astronaut.app %>/images',
                     src: '{,*/}*.{png,jpg,jpeg}',
-                    dest: '<%= stormcall.tmp %>/images'
+                    dest: '<%= astronaut.tmp %>/images'
                 }]
             }
         },
@@ -168,18 +168,18 @@ module.exports = function (grunt) {
             tmp: {
                 files: [{
                     expand: true,
-                    cwd: '<%= stormcall.app %>/images',
+                    cwd: '<%= astronaut.app %>/images',
                     src: '{,*/}*.svg',
-                    dest: '<%= stormcall.tmp %>/images'
+                    dest: '<%= astronaut.tmp %>/images'
                 }]
             }
         },
         cssmin: {
             minify: {
                 expand: true,
-                cwd: '<%= stormcall.tmp %>/styles/',
+                cwd: '<%= astronaut.tmp %>/styles/',
                 src: ['*.css', '!*.min.css'],
-                dest: '<%= stormcall.tmp %>/styles/',
+                dest: '<%= astronaut.tmp %>/styles/',
                 ext: '.css'
             }
         },
@@ -189,8 +189,8 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     dot: true,
-                    cwd: '<%= stormcall.app %>',
-                    dest: '<%= stormcall.tmp %>',
+                    cwd: '<%= astronaut.app %>',
+                    dest: '<%= astronaut.tmp %>',
                     src: [
                         '.htaccess',
                         'styles/fonts/{,*/}*.*',
@@ -202,8 +202,8 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     dot: true,
-                    cwd: '<%= stormcall.tmp %>',
-                    dest: '<%= stormcall.dist %>',
+                    cwd: '<%= astronaut.tmp %>',
+                    dest: '<%= astronaut.dist %>',
                     src: [
                         '**'
                     ]
@@ -212,43 +212,43 @@ module.exports = function (grunt) {
             images: {
                 expand: true,
                 dot: true,
-                cwd: '<%= stormcall.app %>/images',
-                dest: '<%= stormcall.dist %>/images/',
+                cwd: '<%= astronaut.app %>/images',
+                dest: '<%= astronaut.dist %>/images/',
                 src: '{,*/}*.{png,jpg,jpeg,svg}'
             },
             styles: {
                 expand: true,
                 dot: true,
-                cwd: '<%= stormcall.app %>/styles',
-                dest: '<%= stormcall.tmp %>/styles/',
+                cwd: '<%= astronaut.app %>/styles',
+                dest: '<%= astronaut.tmp %>/styles/',
                 src: '{,*/}*.css'
             },
             requirejs: {
                 expand: true,
                 dot: true,
-                cwd: '<%= stormcall.app %>/bower_components/requirejs',
-                dest: '<%= stormcall.tmp %>/bower_components/requirejs',
+                cwd: '<%= astronaut.app %>/bower_components/requirejs',
+                dest: '<%= astronaut.tmp %>/bower_components/requirejs',
                 src: 'require.js'
             },
             modernizr: {
                 expand: true,
                 dot: true,
-                cwd: '<%= stormcall.app %>/bower_components/modernizr',
-                dest: '<%= stormcall.tmp %>/bower_components/modernizr',
+                cwd: '<%= astronaut.app %>/bower_components/modernizr',
+                dest: '<%= astronaut.tmp %>/bower_components/modernizr',
                 src: 'modernizr.js'
             }
         },
         i18n: {
-            src: ['<%= stormcall.app %>/lang/*.json'],
-            dest: '<%= stormcall.app %>/scripts/modules/stormcall_i18n.js'
+            src: ['<%= astronaut.app %>/lang/*.json'],
+            dest: '<%= astronaut.app %>/scripts/modules/astronaut_i18n.js'
         },
         modernizr: {
-            devFile: '<%= stormcall.app %>/bower_components/modernizr/modernizr.js',
-            outputFile: '<%= stormcall.tmp %>/bower_components/modernizr/modernizr.js',
+            devFile: '<%= astronaut.app %>/bower_components/modernizr/modernizr.js',
+            outputFile: '<%= astronaut.tmp %>/bower_components/modernizr/modernizr.js',
             files: [
-                '<%= stormcall.tmp %>/scripts/{,*/}*.js',
-                '<%= stormcall.tmp %>/styles/{,*/}*.css',
-                '!<%= stormcall.tmp %>/scripts/vendor/*'
+                '<%= astronaut.tmp %>/scripts/{,*/}*.js',
+                '<%= astronaut.tmp %>/styles/{,*/}*.css',
+                '!<%= astronaut.tmp %>/scripts/vendor/*'
             ],
             uglify: true
         },
@@ -275,9 +275,9 @@ module.exports = function (grunt) {
         requirejs: {
             production: {
                 options: {
-                    baseUrl: "<%= stormcall.app %>/scripts",
+                    baseUrl: "<%= astronaut.app %>/scripts",
                     mainConfigFile: "src/scripts/main.js",
-                    out: "<%= stormcall.tmp %>/scripts/main.js",
+                    out: "<%= astronaut.tmp %>/scripts/main.js",
                     preserveLicenseComments: false,
                     optimize: 'none'
                 }
@@ -285,9 +285,9 @@ module.exports = function (grunt) {
             testing: {
                 options: {
                     name: 'ATHENE2-TEST',
-                    baseUrl: "<%= stormcall.app %>/tests/modules",
+                    baseUrl: "<%= astronaut.app %>/tests/modules",
                     mainConfigFile: "src/tests/modules/specRunner.js",
-                    out: "<%= stormcall.tmp %>/scripts/main.js",
+                    out: "<%= astronaut.tmp %>/scripts/main.js",
                     preserveLicenseComments: false,
                     optimize: 'none'
                 }
@@ -295,20 +295,20 @@ module.exports = function (grunt) {
         },
         "language-update": {
             src: [
-                '<%= stormcall.app %>/scripts/{,*/}*.js'
+                '<%= astronaut.app %>/scripts/{,*/}*.js'
             ],
             langSrc: [
-                '<%= stormcall.app %>/lang/*.json'
+                '<%= astronaut.app %>/lang/*.json'
             ],
-            dest: '<%= stormcall.app %>/lang-processed'
+            dest: '<%= astronaut.app %>/lang-processed'
         },
         concat: {
             test: {
                 src: [
-                    '<%= stormcall.app %>/bower_components/jasmine/lib/jasmine-core/jasmine.css',
-                    '<%= stormcall.tmp %>/styles/main.css'
+                    '<%= astronaut.app %>/bower_components/jasmine/lib/jasmine-core/jasmine.css',
+                    '<%= astronaut.tmp %>/styles/main.css'
                 ],
-                dest: '<%= stormcall.tmp %>/styles/main.css'
+                dest: '<%= astronaut.tmp %>/styles/main.css'
             }
         },
         connect: {

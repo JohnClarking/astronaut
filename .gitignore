@@ -1,4 +1,5 @@
 .idea
+app/build
 src/bower_components
 node_modules
 tmp

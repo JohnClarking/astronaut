@@ -1,17 +1,17 @@
-stormcall
+astronaut
 =========
 
 ## Build
 
 * You'll need npm, bower and grunt-cli installed
-* cd stormcall/
+* cd astronaut/
 * npm install
 * bower install
 * grunt build
 
 ## Develop
 
-* cd stormcall/
+* cd astronaut/
 * npm install
 * bower install
 * grunt dev
