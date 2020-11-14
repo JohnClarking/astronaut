@@ -1,6 +1,8 @@
 astronaut
 =========
 
+[Play now!](http://moichia.github.io/astronaut/app)
+
 ## Build
 
 * You'll need npm, bower and grunt-cli installed
