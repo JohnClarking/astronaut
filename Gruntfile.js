@@ -24,11 +24,11 @@ module.exports = function (grunt) {
         watch: {
             compass: {
                 files: ['<%= astronaut.app %>/styles/{,*/}*.{scss,sass}'],
-                tasks: ['compass:server', 'autoprefixer', 'clean:dist', 'copy:dist', 'copy:images', 'copy:sounds']
+                tasks: ['compass:server', 'autoprefixer', 'clean:dist', 'copy:dist', 'copy:images']
             },
             styles: {
                 files: ['<%= astronaut.app %>/styles/{,*/}*.css'],
-                tasks: ['copy:styles', 'autoprefixer', 'clean:dist', 'copy:dist', 'copy:images', 'copy:sounds']
+                tasks: ['copy:styles', 'autoprefixer', 'clean:dist', 'copy:dist', 'copy:images']
             },
             jsLang: {
                 files: ['<%= astronaut.app %>/lang/*'],
@@ -36,7 +36,7 @@ module.exports = function (grunt) {
             },
             scripts: {
                 files: ['<%= astronaut.app %>/scripts/{,*/}*.js', '<%= astronaut.app %>/**/*.js'],
-                tasks: ['jshint', 'copy:requirejs', 'requirejs:production', 'clean:dist', 'copy:dist', 'copy:images', 'copy:sounds'],
+                tasks: ['jshint', 'copy:requirejs', 'requirejs:production', 'clean:dist', 'copy:dist', 'copy:images'],
                 options: {
                     // Start a live reload server on the default port 35729
                     livereload: true
@@ -44,16 +44,12 @@ module.exports = function (grunt) {
             },
             images: {
                 files: ['<%= astronaut.app %>/images/{,*/}*.{png,jpg,jpeg}'],
-                tasks: ['imagemin', 'clean:dist', 'copy:dist', 'copy:images', 'copy:sounds']
+                tasks: ['imagemin', 'clean:dist', 'copy:dist', 'copy:images']
             },
             fonts: {
                 files: ['<%= astronaut.app %>/styles/fonts/*'],
-                tasks: ['copy:tmp', 'clean:dist', 'copy:dist', 'copy:images', 'copy:sounds']
-            },
-            sounds: {
-                files: ['<%= astronaut.app %>/sound/{,*/}*.{mp3,ogg}'],
-                tasks: ['copy:sounds']
-            },
+                tasks: ['copy:tmp', 'clean:dist', 'copy:dist', 'copy:images']
+            }
         },
         clean: {
             tmp: {
@@ -220,13 +216,6 @@ module.exports = function (grunt) {
                 dest: '<%= astronaut.dist %>/images/',
                 src: '{,*/}*.{png,jpg,jpeg,svg}'
             },
-            sounds: {
-                expand: true,
-                dot: true,
-                cwd: '<%= astronaut.app %>/sound',
-                dest: '<%= astronaut.dist %>/sound/',
-                src: '{,*/}*.{mp3,ogg}'
-            },
             styles: {
                 expand: true,
                 dot: true,
@@ -349,7 +338,6 @@ module.exports = function (grunt) {
             'clean:dist',
             'copy:dist',
             'copy:images',
-            'copy:sounds',
             'connect',
             'watch'
         ]);
@@ -366,7 +354,6 @@ module.exports = function (grunt) {
         'modernizr',
         'uglify',
         'clean:dist',
-        'copy:sounds',
         'copy:dist',
         'clean:tmp'
     ]);

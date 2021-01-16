@@ -5,22 +5,19 @@ define(['jquery', 'underscore', 'easel'], function ($, _, createjs) {
         width = 200;
 
     FuelBar = function (player) {
-        var self = this,
-            lastFuel = -10;
+        var self = this;
 
         this.player = player;
         this.object = new createjs.Shape();
         this.object.graphics.beginStroke("white").beginFill("white").drawRect(20, 20, width, 20).endStroke().endFill();
-        this.object.zindex = 1000;
 
         createjs.Ticker.addEventListener('tick', function () {
             var fuel = player.getFuel(),
                 maxFuel = player.getMaxFuel(),
                 r = width / maxFuel;
-            if (fuel !== lastFuel) {
+            if (fuel !== maxFuel) {
                 self.object.graphics.beginStroke("white").beginFill("black").drawRect(20, 20, width, 20).endFill().endStroke();
                 self.object.graphics.beginFill("white").drawRect(20, 20, width - ((maxFuel - fuel) * r), 20).endFill();
-                lastFuel = fuel;
             }
         });
     };
@@ -29,5 +26,7 @@ define(['jquery', 'underscore', 'easel'], function ($, _, createjs) {
         return this.object;
     };
 
-    return FuelBar;
+    return function (player) {
+        return new FuelBar(player);
+    };
 });
