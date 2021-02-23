@@ -43,7 +43,7 @@ module.exports = function (grunt) {
                 }
             },
             images: {
-                files: ['<%= astronaut.app %>/images/{,*/}*.{png,jpg,jpeg}'],
+                files: ['<%= astronaut.app %>/images/{,*/}*.{png,jpg,jpeg}', '<%= astronaut.app %>/images/**/*.{png,jpg,jpeg}'],
                 tasks: ['imagemin', 'clean:dist', 'copy:dist', 'copy:images', 'copy:sounds']
             },
             fonts: {
@@ -218,7 +218,7 @@ module.exports = function (grunt) {
                 dot: true,
                 cwd: '<%= astronaut.app %>/images',
                 dest: '<%= astronaut.dist %>/images/',
-                src: '{,*/}*.{png,jpg,jpeg,svg}'
+                src: '**/*.{png,jpg,jpeg,svg}'
             },
             sounds: {
                 expand: true,
