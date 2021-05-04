@@ -1,6 +1,8 @@
 astronaut
 =========
 
+![Astronaut](/.astronaut.png?raw=true "Astronaut")
+
 \>\> [**Play now!**](http://moichia.github.io/astronaut/app) \<\<
 
 Works best on **Chrome**.
