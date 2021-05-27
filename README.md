@@ -1,7 +1,7 @@
 astronaut
 =========
 
-![Astronaut](/.astronaut.png?raw=true "Astronaut")
+![Astronaut](https://raw.githubusercontent.com/moichia/astronaut/master/astronaut.png "Astronaut")
 
 \>\> [**Play now!**](http://moichia.github.io/astronaut/app) \<\<
 
